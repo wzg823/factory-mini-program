@@ -1,0 +1,36 @@
+<!--pages/equipment/detail.wxml-->
+<view class="equ-detail">
+    <view class="equ-detail-topnav">
+        <view data-index='0' bindtap='bindtapNav' class="{{navIndex==0?'current':''}}">
+            基础信息
+            <view class="blank_blue"></view>
+        </view>
+        <view data-index='1' bindtap='bindtapNav' class="{{navIndex==1?'current':''}}">
+            设备数采
+            <view class="blank_blue"></view>
+        </view>
+        <view data-index='2' bindtap='bindtapNav' class="{{navIndex==2?'current':''}}">
+            故障预测
+            <view class="blank_blue"></view>
+        </view>
+        <view data-index='3' bindtap='bindtapNav' class="{{navIndex==3?'current':''}}">
+            设备维保
+            <view class="blank_blue"></view>
+        </view>
+    </view>
+    <view class="equ-detail-container">
+        <view class="equ-detail-leftnav">
+            <scroll-view scroll-y="true" class="scroll-view">
+                <view wx:for="{{shops}}" wx:key="index" class="shop-item">
+                    <view class="shop-name" data-index="{{index}}" bindtap="toggleDevices">{{item.name}}</view>
+                    <view wx:if="{{item.expanded}}" class="device-list">
+                        <block wx:for="{{item.devices}}" wx:key="i">
+                            <view  data-index="{{i}}" bindtap="bindDevice" class="device-item">{{item.deviceName}}</view>
+                        </block>
+                        
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

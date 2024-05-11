@@ -1,7 +1,11 @@
 // utils/request.js
-const baseUrl = 'https://service.ideamark.cn/org/';
+const baseUrl = 'http://service.ideamark.cn/org/';
 
 const request = (url, method, data, header = {}) => {
+    const token = wx.getStorageSync('token');
+    if (token) {
+        header['Authorization'] = `Bearer ${token}`;
+    }
     return new Promise((resolve, reject) => {
         wx.request({
             url: baseUrl + url,
@@ -16,20 +20,41 @@ const request = (url, method, data, header = {}) => {
                     statusCode,
                     data
                 } = res;
+                console.log(res)
                 if (statusCode >= 200 && statusCode < 300) {
-                    // 请求成功的处理
                     resolve(data);
-                } else if (statusCode == 9999) {
-                    // 需要重新登录
-                } else if (statusCode == 110110) {
-                    // 暂无权限
-                } else if (statusCode >= 10000 && statusCode < 20000) {
-                    // 1-2万内的状态码，属于请求错误，需要研发处理
-                    reject(`网络请求错误，状态码${statusCode}`);
-                } else if (statusCode >= 20000) {
-                    // 大于等于2万的状态码，属于业务错误，直接吐司或弹窗
+                    if (data.code == 9999) {
+                        // 需要重新登录
+                    } else if (data.code == 110110) {
+                        // 暂无权限
+                        wx.showToast({
+                            title: '暂无权限',
+                            icon: 'none',
+                            duration: 2000
+                        })
+                    } else if (data.code > 10000 && data.code < 20000) {
+                        // 1-2万内的状态码，属于请求错误，需要研发处理
+                        wx.showToast({
+                            title: '网络请求错误',
+                            icon: 'none',
+                            duration: 2000
+                        })
+                        reject(`网络请求错误，状态码${data.code}`);
+                    } else if (data.code >= 20000) {
+                        wx.showToast({
+                            title: data.message,
+                            icon: 'none',
+                            duration: 2000
+                        })
+                        // 大于等于2万的状态码，属于业务错误，直接吐司或弹窗
+                    }
                 } else {
                     // 可以根据项目需求处理HTTP错误
+                    wx.showToast({
+                        title: '网络请求错误',
+                        icon: 'none',
+                        duration: 2000
+                    })
                     reject(`网络请求错误，状态码${statusCode}`);
                 }
             },
@@ -40,7 +65,4 @@ const request = (url, method, data, header = {}) => {
         });
     });
 };
-module.exports = {
-    get: (url, data, header) => request(url, 'GET', data, header),
-    post: (url, data, header) => request(url, 'POST', data, header),
-};
+module.exports = request;

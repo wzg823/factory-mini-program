@@ -1,5 +1,5 @@
 // pages/login/index.js
-const { get, post } = require('../../utils/request');
+const request = require('../../utils/request');
 Page({
   data: {
     phone:'',
@@ -12,16 +12,26 @@ Page({
 
   },
   login(){
-    post('auth/login',
-    {
-        mobile:this.phone,
-        password:this.password
-    }
-    ).then(res=>{
-        console.log(res)
-    }).catch(err=>{
-        console.log(err)
-    })
+      if(this.data.isChecked){
+        request('auth/login','POST',{
+            mobile:this.data.phone,
+            password:this.data.password
+        }).then(res=>{
+            console.log(res)
+            if(res.code == 0){
+                let token = res.data.token;  
+            }
+        }).catch(err=>{
+            console.log(err)
+        })
+      }else{
+        wx.showToast({
+            title: '请同意并勾选条款',
+            icon: 'none',
+            duration: 2000
+        })
+      }
+   
   },
   handlePhone(e){
     this.setData({  

@@ -1,0 +1,74 @@
+/* pages/equipment/detail.wxss */
+page{
+    background-color: #fff;
+}
+.equ-detail-topnav{
+    display: flex;
+    height: 124rpx;
+    border-bottom: 1rpx solid #E2E2E2;
+    font-size: 30rpx;
+    color: #999999;
+}
+.equ-detail-topnav >view{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.equ-detail-topnav .current{
+    color: #111;
+}
+.equ-detail-topnav .current .blank_blue{
+    border: 5rpx solid #0A78F5;
+}
+.blank_blue{
+    width: 24rpx;
+    height: 0;
+    border: 5rpx solid #fff;
+    border-radius: 6rpx;
+    margin-top: 24rpx;
+}
+.equ-detail-container{
+    display: flex;
+    height: calc(100vh - 124rpx);
+    width: 100%;
+}
+.equ-detail-leftnav{
+    width: 200rpx;
+    flex-direction: column;  
+    background-color: #F7F7F7;
+    height: 100%;
+}
+.scroll-view {  
+    width: 100%;  
+    box-sizing: border-box;  
+    height: 100%;
+  }  
+    
+  .shop-item {  
+    /* height: 100rpx; */
+  }  
+    
+  .shop-name {   
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    color: #111;
+    font-size: 34rpx;
+    font-weight: bold;
+    background-color: #fff;
+  }  
+    
+  .device-list {  
+
+  }  
+    
+  .device-item {  
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    color: #111;
+    font-size: 30rpx;
+  }
