@@ -1,0 +1,116 @@
+<!--pages/home/home.wxml-->
+<view class="home">
+    <!-- 首页自定义navigationBar -->
+    <view class="home-navigationbar">
+        <view class="user-name">
+            <view style="height:{{height}}px;top:{{top}}px;line-height: {{height}}px;">123</view>
+        </view>
+    </view>
+    <!-- 首页主容器 -->
+    <view class="home-main">
+        <view class="home-container">
+            <!-- 顶部banner -->
+            <swiper class="home-banner" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                <!-- <block wx:for="{{background}}" wx:key="*this"> -->
+                <swiper-item>
+                    <image src="../../statics/images/s_banner.png" class="banner-image"></image>
+                </swiper-item>
+                <swiper-item>
+                    <image src="../../statics/images/s_banner.png" class="banner-image"></image>
+                </swiper-item>
+                <swiper-item>
+                    <image src="../../statics/images/s_banner.png" class="banner-image"></image>
+                </swiper-item>
+                <!-- </block> -->
+            </swiper>
+            <!-- 模块一 -->
+            <view class="home-module1">
+                <text class="home-module-title">设备管理与分析</text>
+                <view class="icon-box">
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>设备台账</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>设备告警</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>运行分析</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>效率分析</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>产量分析</text>
+                    </view>
+                </view>
+                <view class="icon-box">
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>告警分析</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>维保分析</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>报修分析</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>维修分析</text>
+                    </view>
+                    <view class="icon-item">
+                        <image src="../../statics/images/icon.png" mode="" />
+                        <text>质保分析</text>
+                    </view>
+                </view>
+            </view>
+            <!-- 模块二 -->
+            <view class="home-module2">
+                <view class="home-module-title-view">
+                    <view class="blank-blue"></view>
+                    设备总览
+                    <text>（单位：台）</text>
+                </view>
+                <view class="num-box">
+                    <view class="num-item">
+                        <text>100</text>
+                        总设备数
+                    </view>
+                    <view class="num-item">
+                        <text>100</text>
+                        数采设备数
+                    </view>
+                    <view class="num-item">
+                        <text>100</text>
+                        预测设备数
+                    </view>
+                    <view class="num-item">
+                        <text>100</text>
+                        运维设备数
+                    </view>
+                </view>
+            </view>
+            <!-- 模块三 -->
+            <view class="home-module3">
+                <view class="home-tabs">
+                    <view data-index="0" bindtap="onTabClick" class="{{currentTabIndex == 0 ? 'current' : ''}}">运行状态<view class="blank-bottom"></view>
+                    </view>
+                    <view data-index="1" bindtap="onTabClick" class="{{currentTabIndex == 1 ? 'current' : ''}}">稼动率<view class="blank-bottom"></view>
+                    </view>
+                    <view data-index="2" bindtap="onTabClick" class="{{currentTabIndex == 2 ? 'current' : ''}}">告警修复<view class="blank-bottom"></view>
+                    </view>
+                </view>
+                <view class="content">
+                    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

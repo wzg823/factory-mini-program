@@ -1,0 +1,22 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.ghost{
+    border: 1rpx solid #0A78F5;
+    color: #0A78F5;
+    background-color: #fff;
+    text-align: center;
+}
+.primary{
+    border: 1rpx solid #0A78F5;
+    color: #fff;
+    background-color: #0A78F5;
+    text-align: center;
+}

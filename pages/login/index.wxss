@@ -1,0 +1,66 @@
+/* pages/login/index.wxss */
+.login{
+    padding:94rpx 50rpx;
+}
+.login-title{
+    font-size: 48rpx;
+    color: #121212;
+    font-weight: 800;
+    
+}
+.login-container{
+    margin-top: 112rpx;
+}
+.login-phone,.login-paw{
+    width: 100%;
+    height: 80rpx;
+    border-bottom: 1rpx solid #E2E2E2;
+    margin-top: 80rpx;
+    display: flex;
+}
+.login-phone input,.login-paw input{
+    font-size: 28rpx;
+    color: #111;
+}
+.login-paw{
+    display: flex;
+    justify-content: space-between;
+}
+.login-phone input::placeholder,.login-paw input::placeholder{
+    color: #666;
+    font-size: 28rpx;
+}
+.toggle-icon{
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.login-agree{
+    font-size: 24rpx;
+    width: 100%;
+    margin-top: 48rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-agree text{
+    color: #0A78F5;
+}
+.login-agree .checkIcon{
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 12rpx;
+}
+
+.login-btn{
+    width: 100%;
+    height: 100rpx;
+    background-color: #0A78F5;
+    text-align: center;
+    line-height: 100rpx;
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: bold;
+    border-radius: 50rpx 50rpx 50rpx 50rpx;
+    margin-top: 155rpx;
+}

@@ -1,0 +1,86 @@
+<!--pages/equipment/index.wxml-->
+<view class="equ">
+    <view class="equ-sel" bindtap="onPullDown">
+        筛选
+        <image class="sx" src="/statics/images/sx.png" mode="" />
+    </view>
+    <view class="equ-list">
+        <view class="equ-item">
+            <view class="tp">
+                <view class="lt">
+                    <view class="tit">
+                        3号车间 1号机
+                        <view class="point">·</view><text>未联网</text>
+                    </view>
+                    <view class="con">
+                        <text>SB-202401-001</text>
+                        <text>立加 | 马扎克 | 发那科</text>
+                    </view>
+                </view>
+                <view class="rt">
+                    <view class="btn primary">设备详情</view>
+                    <view class="btn ghost">设备报修</view>
+                </view>
+            </view>
+            <view class="bm">
+                <view>
+                    <text>移动率</text>
+                    <text>68%</text>
+                </view>
+                <view>
+                    <text>产量</text>
+                    <text>20</text>
+                </view>
+                <view>
+                    <text>运行时长</text>
+                    <text>6.5h</text>
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <view class="equ-mask" wx:if="{{dropdownToggle}}"></view>
+    <view class="equ-options" animation="{{animationData}}">
+        <view class="dp">
+            设备位置
+            <view class="select" bindtap="showCheckModal">
+                全部车间
+                <image src="/statics/images/down.png" mode="" />
+            </view>
+        </view>
+        <view class="ck">
+            运行状态
+            <view class="check-box">
+                <view class="checkItem">
+                    运行
+                </view>
+                <view class="checkItem">
+                    运行
+                </view>
+                <view class="checkItem">
+                    运行
+                </view>
+            </view>
+        </view>
+        <view class="equ-options-btns">
+            <view class="btn reset" bindtap="resetViewPosition">重置</view>
+            <view class="btn primary" bindtap="resetViewPosition">确定</view>
+        </view>
+    </view>
+    <view class="modal-check" wx:if="{{showCheckModa}}">
+        <view class="check-all">
+            <label class="checkbox" bindtap='selectAll'>
+                <checkbox value="cb"  checked="{{isAllSelected}}" />全选
+            </label>
+            <text style="color: #0A78F5;" bindtap='confirmSelect'>确定</text>
+        </view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="weui-cell weui-check__label" wx:for="{{currentCheckItems}}" wx:key="{{item.value}}">
+                <view class="weui-cell__hd">
+                    <checkbox value="{{item.value}}" checked="{{item.checked}}" />
+                </view>
+                <view class="weui-cell__bd">{{item.name}}</view>
+            </label>
+        </checkbox-group>
+    </view>
+</view>

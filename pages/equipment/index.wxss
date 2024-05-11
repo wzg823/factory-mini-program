@@ -1,0 +1,191 @@
+/* pages/equipment/index.wxss */
+page{
+    background-color: #F8F8F8;
+    padding: 30rpx;
+}
+.equ{
+    width: calc(100% - 60rpx);
+}
+.equ-sel{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.sx{
+    width: 23rpx;
+    height: 16rpx;
+    margin-left: 12rpx;
+}
+
+.equ-list{
+    width: 100%;
+    margin-top: 30rpx;
+}
+.equ-item{
+    background-color: #fff;
+    margin-top: 24rpx;
+    padding: 32rpx;
+    border-radius: 6rpx 6rpx 6rpx 6rpx;
+    font-size: 24rpx;
+}
+
+.equ-item .tp{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.equ-item .lt{
+
+}
+.equ-item .rt{
+
+}
+.equ-item .rt .btn{
+    width: 142rpx;
+    border-radius: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin-bottom: 22rpx;
+}
+.equ-item .tit{
+    color: #111;
+    font-size: 28rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+
+}
+.equ-item .tit >text{
+    font-size: 24rpx;
+    height: 100%;
+}
+.equ-item .point{
+    width: 20rpx;
+    height: 100%;
+    font-size: 48rpx;
+    margin-left: 28rpx;
+    line-height: 38rpx;
+    margin-right: 5rpx;
+}
+.equ-item .con{
+    margin-top: 24rpx;
+    display: flex;
+    flex-direction: column;
+    color: #111;
+}
+.equ-item .con text{
+    margin-bottom: 18rpx;
+}
+.equ-item .bm{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.equ-item .bm view{
+    margin-top: 18rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 76rpx;
+    justify-content: space-between;
+    color: #0A78F5;
+}
+.equ-mask{
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+}
+.equ-options{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 64rpx);
+    background-color: #fff;
+    padding: 32rpx;
+    transform: translateY(-100%);
+}
+.equ-options .dp,.equ-options .ck{
+    margin-bottom: 30rpx;
+    color: #111;
+    font-size: 28rpx;
+}
+.equ-options .check-box{
+    display: flex;
+    margin-top: 27rpx;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.equ-options .checkItem{
+    padding: 14rpx 45rpx;
+    background-color: #F2F2F2;
+    border-radius: 50rpx;
+    font-size: 24rpx;
+    margin-right: 20rpx;
+    margin-bottom: 24rpx;
+}
+
+.equ-options .select{
+    display: flex;
+    width: 160rpx;
+    padding: 14rpx 26rpx;
+    background-color: #F2F2F2;
+    border-radius: 50rpx;
+    font-size: 24rpx;
+    margin-top: 27rpx;
+    align-items: center;
+    justify-content: space-between;
+}
+.equ-options .select image{
+    width: 24rpx;
+    height: 24rpx;
+}
+.equ-options-btns{
+    display: flex;
+    align-items: center;
+    /* width: 100%; */
+    justify-content: space-between;
+}
+
+.equ-options-btns .btn:nth-child(1){
+    width: 210rpx;
+    background-color: #F2F2F2;
+    height: 80rpx;
+    border-radius: 50rpx;
+    text-align: center;
+    line-height: 80rpx;
+}
+.equ-options-btns .btn:nth-child(2){
+    width: 438rpx;
+    height: 78rpx;
+    border-radius: 50rpx;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.modal-check{
+    padding: 30rpx;
+    position: fixed;
+    width: calc(100% - 124rpx);
+    top: 32rpx;
+    left: 32rpx;
+    background-color: #fff;
+    height: calc(100% - 125rpx);
+    overflow:scroll
+}
+
+.weui-cell{
+    display: flex;
+    height: 65rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #F2F2F2;
+}
+.check-all{
+    height: 65rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

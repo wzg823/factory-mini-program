@@ -1,0 +1,18 @@
+<!--pages/login/index.wxml-->
+<view class="login">
+    <text class="login-title">账号密码登录</text>
+    <view class="login-container">
+        <view class="login-phone">
+            <input placeholder="手机号" type="text" bindinput="handlePhone" />
+        </view>
+        <view class="login-paw">
+            <input type="{{passwordType ? 'text' : 'password'}}" placeholder="密码" bindinput="handlePaw" value="{{password}}" />
+            <image src="{{passwordType ? '/statics/images/eye.png' : '/statics/images/eye_close.png'}}" mode="aspectFit" class="toggle-icon" bindtap="togglePasswordVisibility" />
+        </view>
+        <view class="login-agree">
+            <image bindtap="toggleCheck" src="{{isChecked ? '/statics/images/yes.png' : '/statics/images/no.png'}}" class="checkIcon" mode="aspectFit" />
+            我已阅读并同意 <text>《用户服务协议》</text> 及 <text>《隐私政策》</text>
+        </view>
+        <view class="login-btn" bindtap='login'>登录</view>
+    </view>
+</view>

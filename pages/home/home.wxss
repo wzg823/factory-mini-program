@@ -1,0 +1,137 @@
+/* pages/home/home.wxss */
+.home{
+    background-color: #F8F8F8;
+}
+.home-navigationbar{
+    width: 100%;
+    height: 310rpx;
+    background-color: #0A78F5;
+}
+.user-name{
+    height: 100%;
+    color: #fff;
+    position: relative;
+}
+.user-name view{
+    position: absolute;
+    left: 32rpx;
+}
+.home-main{
+    width: 100%;
+    margin-top: -128rpx;
+    border-radius: 42rpx 42rpx 0rpx 0rpx;
+    background-color: #F8F8F8;
+    padding-bottom: 160rpx;
+}
+.home-container{
+    padding: 46rpx 32rpx;
+}
+.home-banner{
+    height: 210rpx;
+}
+.banner-image{
+    width: 100%;
+    height: 100%;
+}
+.home-module1,.home-module2,.home-module3{
+    background-color: #fff;
+    border-radius: 14rpx;
+    padding: 30rpx;
+    margin-top: 30rpx;
+}
+.home-module2{
+    background: linear-gradient( 180deg, #F3F9FF 0%, #FFFFFF 100%);
+}
+.home-module-title{
+    font-size: 30rpx;
+    color: #111;
+    font-weight: bold;
+}
+.icon-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+.icon-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.icon-item image{
+    width: 52rpx;
+    height: 52rpx;
+    margin-bottom: 10rpx;
+}
+.icon-item text{
+    color: #111;
+    font-size: 24rpx;
+}
+.home-module-title-view{
+    font-size: 30rpx;
+    color: #111;
+    font-weight: bold;
+    padding-left: 18rpx;
+    display: flex;
+    align-items: center;
+}
+.blank-blue{
+    background-color: #0A78F5;
+    width: 0rpx;
+    height: 22rpx;
+    border: 5rpx solid #0A78F5;
+    border-radius: 20rpx;
+    margin-right: 15rpx;
+}
+.home-module-title-view text{
+    font-weight: normal;
+    font-size: 24rpx;
+    margin-left: 15rpx;
+}
+.num-box{
+    display: flex;
+}
+.num-item{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30rpx;
+    color: #111;
+    font-size: 24rpx;
+}
+.num-item text{
+    margin-bottom: 15rpx;
+    font-weight: bold;
+    font-size: 32rpx;
+}
+.home-tabs{
+    display: flex;
+    align-items: center;
+}
+.home-tabs >view{
+    margin-right:65rpx;
+    color: #999;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-tabs .current{
+    font-size: 30rpx;
+    color: #111;
+}
+.blank-bottom{
+    height: 0;
+    width: 20rpx;
+    border: 5rpx solid #fff;
+    border-radius: 10rpx;
+    margin-top: 15rpx;
+}
+.home-tabs .current .blank-bottom{
+    border: 5rpx solid #0A78F5;
+}
+.content{
+    height: 200rpx;
+}
