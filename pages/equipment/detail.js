@@ -8,16 +8,7 @@ Page({
           name: '车间1',  
           expanded: false,  
           devices: [  
-            { deviceId: 1, deviceName: '设备1' },  
-            { deviceId: 2, deviceName: '设备2' },
-            { deviceId: 3, deviceName: '设备3' },    
-            { deviceId: 4, deviceName: '设备3' },    
-            { deviceId: 5, deviceName: '设备3' },    
-            { deviceId: 6, deviceName: '设备3' },    
-            { deviceId: 7, deviceName: '设备3' },    
-            { deviceId: 8, deviceName: '设备3' },    
-            { deviceId: 9, deviceName: '设备3' },    
-            { deviceId: 10, deviceName: '设备3' },    
+            { deviceId: 1, deviceName: '设备1',checked:false },     
           ],  
         },  
         {  
@@ -25,19 +16,11 @@ Page({
           name: '车间2',  
           expanded: false,  
           devices: [  
-            { deviceId: 11, deviceName: '设备1' },  
-            { deviceId: 12, deviceName: '设备2' },
-            { deviceId: 13, deviceName: '设备3' },    
-            { deviceId: 14, deviceName: '设备3' },    
-            { deviceId: 15, deviceName: '设备3' },    
-            { deviceId: 16, deviceName: '设备3' },    
-            { deviceId: 17, deviceName: '设备3' },    
-            { deviceId: 18, deviceName: '设备3' },    
-            { deviceId: 19, deviceName: '设备3' },    
-            { deviceId: 20, deviceName: '设备4' },  
+            { deviceId: 11, deviceName: '设备1',checked:false },  
           ],  
         },  
       ],  
+      currentShop:0
   },
   onLoad(options) {
 
@@ -53,9 +36,22 @@ Page({
     const shopIndex = e.currentTarget.dataset.index;
     const shops = this.data.shops;  
     shops[shopIndex].expanded = !shops[shopIndex].expanded;  
-    this.setData({ shops });  
+    this.setData({ shops,currentShop:shopIndex });  
   },  
   bindDevice(e){
     console.log(e)
+    let id = e.target.dataset.deviceId
+    let shops = this.data.shops
+    shops && shops.map(item=>{
+        item.devices && item.devices.map(items=>{
+            if(items.deviceId == id){
+                items.checked = true
+            }else{
+                items.checked = false
+            }
+        })
+    })
+    console.log(shops)
+    this.setData({shops})
   }
 })

@@ -1,15 +1,17 @@
 /* pages/equipment/detail.wxss */
-page{
+page {
     background-color: #fff;
 }
-.equ-detail-topnav{
+
+.equ-detail-topnav {
     display: flex;
     height: 124rpx;
     border-bottom: 1rpx solid #E2E2E2;
     font-size: 30rpx;
     color: #999999;
 }
-.equ-detail-topnav >view{
+
+.equ-detail-topnav>view {
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -17,41 +19,47 @@ page{
     justify-content: center;
     font-weight: bold;
 }
-.equ-detail-topnav .current{
+
+.equ-detail-topnav .current {
     color: #111;
 }
-.equ-detail-topnav .current .blank_blue{
+
+.equ-detail-topnav .current .blank_blue {
     border: 5rpx solid #0A78F5;
 }
-.blank_blue{
+
+.blank_blue {
     width: 24rpx;
     height: 0;
     border: 5rpx solid #fff;
     border-radius: 6rpx;
     margin-top: 24rpx;
 }
-.equ-detail-container{
+
+.equ-detail-container {
     display: flex;
     height: calc(100vh - 124rpx);
     width: 100%;
 }
-.equ-detail-leftnav{
+
+.equ-detail-leftnav {
     width: 200rpx;
-    flex-direction: column;  
+    flex-direction: column;
     background-color: #F7F7F7;
     height: 100%;
 }
-.scroll-view {  
-    width: 100%;  
-    box-sizing: border-box;  
+
+.equ-detail-leftnav .scroll-view {
+    width: 100%;
+    box-sizing: border-box;
     height: 100%;
-  }  
-    
-  .shop-item {  
+}
+
+.shop-item {
     /* height: 100rpx; */
-  }  
-    
-  .shop-name {   
+}
+
+.shop-name {
     height: 100rpx;
     text-align: center;
     line-height: 100rpx;
@@ -59,16 +67,78 @@ page{
     font-size: 34rpx;
     font-weight: bold;
     background-color: #fff;
-  }  
-    
-  .device-list {  
+}
 
-  }  
-    
-  .device-item {  
+.device-list {}
+
+.device-item {
     height: 100rpx;
     text-align: center;
     line-height: 100rpx;
     color: #111;
     font-size: 30rpx;
-  }
+}
+
+.device-current {
+    color: #0A78F5;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.detail1,
+.detail2,
+.detail3,
+.detail4 {
+    padding: 44rpx 32rpx 44rpx 22rpx;
+    width: calc(100% - 200rpx);
+}
+
+.detail1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail1 .device-img {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.device-img image{
+    width: 254rpx;
+    height: 270rpx;
+}
+.detail1 .device-status {
+    margin-top: 18rpx;
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.detail1 .point {
+    width: 18rpx;
+    height: 18rpx;
+    margin-right: 5rpx;
+}
+
+.detail1 .point:nth-child(3) {
+    margin-left: 36rpx;
+}
+
+.device-infos {
+    width: 100%;
+}
+
+.device-infos-item {
+    width: calc(100% - 64rpx);
+    background-color: #F7F7F7;
+    padding: 28rpx 32rpx;
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    margin-top: 20rpx;
+    color: #111;
+    font-size: 24rpx;
+}
+

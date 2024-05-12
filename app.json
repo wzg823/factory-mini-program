@@ -1,10 +1,10 @@
 {
   "pages": [
       "pages/equipment/detail",
+      "pages/equipment/index",
       "pages/login/index",
-    "pages/equipment/index",
-    "pages/home/home",
-    "pages/index/index",
+      "pages/home/home",
+      "pages/index/index",
     "pages/logs/logs",
     "pages/my/index"
   ],

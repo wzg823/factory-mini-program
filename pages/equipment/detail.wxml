@@ -24,13 +24,38 @@
                 <view wx:for="{{shops}}" wx:key="index" class="shop-item">
                     <view class="shop-name" data-index="{{index}}" bindtap="toggleDevices">{{item.name}}</view>
                     <view wx:if="{{item.expanded}}" class="device-list">
-                        <block wx:for="{{item.devices}}" wx:key="i">
-                            <view  data-index="{{i}}" bindtap="bindDevice" class="device-item">{{item.deviceName}}</view>
-                        </block>
-                        
+                    <view wx:for="{{item.devices}}" wx:key="i" data-device-id="{{item.deviceId}}" bindtap="bindDevice" class="{{item.checked?'device-item device-current':'device-item'}}">{{item.deviceName}}</view>
                     </view>
                 </view>
             </scroll-view>
         </view>
+        <!-- 基础信息 -->
+        <scroll-view scroll-y="true" class="detail1" wx:if="{{navIndex == 0}}">
+            <view class="device-img">
+                <image src="/statics/images/icon.png" mode=""/>
+            </view>
+            <view class="device-status">
+                <image src="/statics/images/point_green.png" class="point" mode=""/>
+                <text>有效</text>
+                <image src="/statics/images/point_green.png" class="point" mode=""/>
+                <text>运行</text>
+            </view>
+            <view class="device-infos">
+                <view class="device-infos-item">
+                    设备编号：YNWLSB-202401-001
+                </view>
+                <view class="device-infos-item">
+                    设备品牌：长190cm；宽180cm；高20 0cm
+                </view>
+            </view>
+        </scroll-view>
+        <!-- 设备数采 -->
+        <scroll-view scroll-y="true" class="detail2" wx:if="{{navIndex == 1}}">
+        
+        </scroll-view>
+        <!-- 故障预测 -->
+        <scroll-view scroll-y="true" class="detail3" wx:if="{{navIndex == 2}}"></scroll-view>
+        <!-- 设备维保 -->
+        <scroll-view scroll-y="true" class="detail4" wx:if="{{navIndex == 3}}"></scroll-view>
     </view>
 </view>

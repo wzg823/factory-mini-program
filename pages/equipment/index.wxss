@@ -52,19 +52,16 @@ page{
     font-size: 28rpx;
     font-weight: bold;
     display: flex;
-    align-items: flex-end;
-
+    align-items: center;
 }
 .equ-item .tit >text{
     font-size: 24rpx;
     height: 100%;
 }
 .equ-item .point{
-    width: 20rpx;
-    height: 100%;
-    font-size: 48rpx;
+    width: 18rpx;
+    height: 18rpx;
     margin-left: 28rpx;
-    line-height: 38rpx;
     margin-right: 5rpx;
 }
 .equ-item .con{

@@ -10,7 +10,7 @@
                 <view class="lt">
                     <view class="tit">
                         3号车间 1号机
-                        <view class="point">·</view><text>未联网</text>
+                       <image class="point" src="/statics/images/point_gray.png" mode=""/><text>未联网</text>
                     </view>
                     <view class="con">
                         <text>SB-202401-001</text>
