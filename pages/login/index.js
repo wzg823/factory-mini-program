@@ -9,7 +9,7 @@ Page({
     isChecked:false,
   },
   onLoad(options) {
-
+      
   },
   login(){
       if(this.data.isChecked){
@@ -18,8 +18,17 @@ Page({
             password:this.data.password
         }).then(res=>{
             console.log(res)
-            if(res.code == 0){
-                let token = res.data.token;  
+            if(res.code == 0 && res.data.token){
+                wx.setStorageSync('token', res.data.token);  
+                wx.showToast({
+                  title: '登录成功，即将跳转到首页',
+                  icon:'none'
+                })
+                setTimeout(()=>{
+                    wx.switchTab({
+                        url:'/pages/home/home'
+                    })
+                },2000)
             }
         }).catch(err=>{
             console.log(err)

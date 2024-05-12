@@ -51,7 +51,41 @@
         </scroll-view>
         <!-- 设备数采 -->
         <scroll-view scroll-y="true" class="detail2" wx:if="{{navIndex == 1}}">
-        
+            <view class="device-brand">
+                <image src="/statics/images/rocket.png" mode=""/>
+                <view class="brand-txt">
+                    <text>运行</text>
+                    <text>今日运行XX小时X分X秒</text>
+                </view>
+            </view>
+            <view class="device-databox">
+                <text class="title">24小时运行状态</text>
+                <view class="device-chart">
+                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+                </view>
+            </view>
+            <view class="device-databox">
+                <text class="title">实时运行数据</text>
+                <view class="data-block">
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                </view>
+            </view>
+            <view class="device-databox">
+                <text class="title">今日数据</text>
+                <view class="data-block">
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                    <view class="data-item"></view>
+                </view>
+            </view>
         </scroll-view>
         <!-- 故障预测 -->
         <scroll-view scroll-y="true" class="detail3" wx:if="{{navIndex == 2}}"></scroll-view>

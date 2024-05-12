@@ -2,15 +2,18 @@
 const baseUrl = 'http://service.ideamark.cn/org/';
 
 const request = (url, method, data, header = {}) => {
-    const token = wx.getStorageSync('token');
-    if (token) {
-        header['Authorization'] = `Bearer ${token}`;
+    let token = wx.getStorageSync('token')
+    if(token){
+        data['token'] = token
     }
     return new Promise((resolve, reject) => {
         wx.request({
             url: baseUrl + url,
             method: method,
-            data: data,
+            data: {
+                'pms':'customer',
+                ...data
+            },
             headers: {
                 'Content-Type': 'application/json',
                 ...header,

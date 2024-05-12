@@ -1,4 +1,5 @@
 // pages/home/home.js
+const request = require('../../utils/request');
 import * as echarts from '../../ec-canvas/echarts';
 
 let chart = null;
