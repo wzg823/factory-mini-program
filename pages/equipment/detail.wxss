@@ -145,6 +145,8 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    /* height: 100%; */
 }
 .device-brand{
     width: 100%;
@@ -175,13 +177,18 @@ page {
 
 .device-databox{
     margin-top: 30rpx;
-
+    width: 100%;
 }
 .device-databox .title{
     font-size: 30rpx;
     color: #111;
     font-weight: bold;
-    margin-bottom: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.device-databox .title text{
+
 }
 .data-block{
     width: 100%;
@@ -200,4 +207,46 @@ page {
 
 .device-chart{
     height: 365rpx;
+    position: relative;
+}
+.chart-mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    background-color: rgba(0,0,0,0);
+}
+.ti{
+    width: 100%;
+    background-color: rgba(0,0,0,0);
+    height:40rpx;
+    margin-top: 8rpx;
+}
+.ti1{
+    margin-top: 50rpx;
+}
+.device-bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 50rpx;
+    justify-content: space-around;
+}
+.device-bottom .btn{
+    width: 240rpx;
+    height: 80rpx;
+    border-radius: 50rpx;
+    text-align: center;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 80rpx;
+    background-color: #0A78F5;
+    color: #fff;
+}
+.device-bottom .btn:first-child{
+    background-color: #35C984;
+}
+.device-chart2{
+    height: 475rpx;
 }

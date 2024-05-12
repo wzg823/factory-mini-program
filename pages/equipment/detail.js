@@ -2,7 +2,7 @@
 const request = require('../../utils/request');
 import * as echarts from '../../ec-canvas/echarts';
 let chart = null;
-function initChart(canvas, width, height, dpr) {
+function initChart1(canvas, width, height, dpr) {
     chart = echarts.init(canvas, null, {
       width: width,
       height: height,
@@ -63,6 +63,7 @@ function initChart(canvas, width, height, dpr) {
                 name: 'Placeholder',
                 type: 'bar',
                 stack: 'Total',
+                barWidth:10,
                 itemStyle: {
                   borderColor: 'transparent',
                   color: 'transparent'
@@ -86,6 +87,7 @@ function initChart(canvas, width, height, dpr) {
                 name: 'Life Cost',
                 type: 'bar',
                 stack: 'Total',
+                barWidth:10,
                 label: {
                   show: false,
                 },
@@ -101,7 +103,10 @@ function initChart(canvas, width, height, dpr) {
           ]
     };
     chart.setOption(option);
-    // chart.on('click', this.handleChartClick);  
+    // chart.on('click', function (params) {  
+    //     console.log(params); // 你可以在这里获取到点击事件的详细信息  
+    //     this.handleChartClick(params)
+    //   });  
     return chart;
   }
 Page({
@@ -126,12 +131,15 @@ Page({
         },  
       ],  
       currentShop:0,
-      ec: {
-        onInit: initChart
+      ec1: {
+        onInit: initChart1
       }
   },
   onLoad(options) {
   },
+  onReady() {
+    console.log(this.data.ec)
+},
   bindtapNav(e){
       this.setData({
           navIndex:e.target.dataset.index
@@ -158,9 +166,14 @@ Page({
     console.log(shops)
     this.setData({shops})
   },
-//   handleChartClick(params) {  
-//     this.setData({  
-//       clickedData: params 
-//     });  
-//   },  
+  handleChartClick(params) {  
+      console.log(params)
+    this.setData({  
+      clickedData: params 
+    });  
+  },  
+  getRunningType(e){
+      console.log(e.target.dataset.type)
+
+  }
 })

@@ -59,9 +59,20 @@
                 </view>
             </view>
             <view class="device-databox">
-                <text class="title">24小时运行状态</text>
+                <view class="title">
+                    24小时运行状态
+                    <text>7:00 - 12:00</text>
+                </view>
                 <view class="device-chart">
-                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar" ec="{{ ec1 }}" force-use-old-canvas="true"></ec-canvas>
+                    <view class="chart-mask">
+                        <view class="ti ti1" data-type="0" bindtap='getRunningType'></view>
+                        <view class="ti ti2" data-type="1" bindtap='getRunningType'></view>
+                        <view class="ti ti3" data-type="2" bindtap='getRunningType'></view>
+                        <view class="ti ti4" data-type="3" bindtap='getRunningType'></view>
+                        <view class="ti ti5" data-type="4" bindtap='getRunningType'></view>
+                        <view class="ti ti6" data-type="5" bindtap='getRunningType'></view>
+                    </view>
                 </view>
             </view>
             <view class="device-databox">
@@ -86,10 +97,20 @@
                     <view class="data-item"></view>
                 </view>
             </view>
+            <view class="device-databox">
+                <text class="title">稼动率分析</text>
+                <view class="device-chart2">
+                    <ec-canvas id="device-Stacked" canvas-id="mychart-line" ec="{{ ec1 }}" force-use-old-canvas="true"></ec-canvas>
+                </view>
+            </view>
+            <view class="device-bottom">
+                <view class="btn">实时</view>
+                <view class="btn">分析</view>
+            </view>
         </scroll-view>
         <!-- 故障预测 -->
-        <scroll-view scroll-y="true" class="detail3" wx:if="{{navIndex == 2}}"></scroll-view>
+        <view class="detail3" wx:if="{{navIndex == 2}}"></view>
         <!-- 设备维保 -->
-        <scroll-view scroll-y="true" class="detail4" wx:if="{{navIndex == 3}}"></scroll-view>
+        <view class="detail4" wx:if="{{navIndex == 3}}"></view>
     </view>
 </view>

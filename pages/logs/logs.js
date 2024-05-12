@@ -14,5 +14,10 @@ Page({
         }
       })
     })
-  }
+  },
+  handleName(params) {  
+    this.setData({  
+      Name: params 
+    });  
+  },
 })
