@@ -51,7 +51,8 @@ Page({
     currentTabIndex:0,
     ec: {
         onInit: initChart
-      }
+      },
+    
   },
   onLoad(options) {
     this.setNavbarHeight();

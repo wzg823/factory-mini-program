@@ -145,8 +145,6 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    /* height: 100%; */
 }
 .device-brand{
     width: 100%;
@@ -248,5 +246,38 @@ page {
     background-color: #35C984;
 }
 .device-chart2{
-    height: 475rpx;
+    height: 365rpx;
+    margin-top: 24rpx;
+}
+
+.sub-title{
+    color: #111111;
+    font-size: 26rpx;
+    padding-top: 24rpx;
+    margin-bottom: 24rpx;
+}
+
+.legend{
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #111111;
+    justify-content: center;
+    margin-top: 30rpx;
+}
+.legend image{
+    width: 9rpx;
+    height: 9rpx;
+    margin-right: 12rpx;
+}
+
+.legend view{
+    display: flex;
+    align-items: center;
+    margin-right: 24rpx;
+}
+
+.device-chart3{
+    height: 400rpx;
+    margin-top: 24rpx;
 }
