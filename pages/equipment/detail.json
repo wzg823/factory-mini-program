@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "ec-canvas": "../../ec-canvas/ec-canvas"
+        "ec-canvas": "../../ec-canvas/ec-canvas",
+        "van-steps": "@vant/weapp/steps/index"
     },
   "navigationBarTitleText": "设备详情" 
 }

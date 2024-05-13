@@ -52,7 +52,7 @@ function initChart4(canvas, width, height, dpr) { //产量分析
 var option = {}
 Page({
     data: {
-        navIndex: 1,
+        navIndex: 3,
         shops: [{
                 id: 1,
                 name: '车间1',
@@ -88,6 +88,50 @@ Page({
         ec4: {
             onInit: initChart4
         },
+        alarmData:[
+            {
+                value:'超程报警',
+                times:20
+            },
+            {
+                value:'超程报警',
+                times:20
+            },
+            {
+                value:'超程报警',
+                times:20
+            },
+            {
+                value:'超程报警',
+                times:20
+            },
+            {
+                value:'超程报警',
+                times:20
+            }
+        ],
+        timeList:[
+            {
+                value:"姓修，工单号: EX-20231131-0101更换齿轮箱坦克链",
+                time:'31日'
+            },
+            {
+                value:"姓修，工单号: EX-20231131-0101更换齿轮箱坦克链",
+                time:'31日'
+            },
+            {
+                value:"姓修，工单号: EX-20231131-0101更换齿轮箱坦克链",
+                time:'31日'
+            },
+            {
+                value:"姓修，工单号: EX-20231131-0101更换齿轮箱坦克链",
+                time:'31日'
+            },
+            {
+                value:"姓修，工单号: EX-20231131-0101更换齿轮箱坦克链",
+                time:'31日'
+            }
+        ]
     },
     onLoad(options) {
 

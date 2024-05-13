@@ -20,3 +20,30 @@
     background-color: #0A78F5;
     text-align: center;
 }
+
+.table{
+    width: 100%;
+    font-size: 24rpx;
+    color: #111;
+}
+.table .thead,.table .tr{
+    height: 74rpx;
+    background-color: #F7F7F7;
+}
+.table .thead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #666;
+}
+.table .tr{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.table .td{
+    text-align: center;
+}
+.table .tr:nth-child(even){
+    background-color: #fff;
+}

@@ -24,7 +24,7 @@
                 <view wx:for="{{shops}}" wx:key="index" class="shop-item">
                     <view class="shop-name" data-index="{{index}}" bindtap="toggleDevices">{{item.name}}</view>
                     <view wx:if="{{item.expanded}}" class="device-list">
-                    <view wx:for="{{item.devices}}" wx:key="i" data-device-id="{{item.deviceId}}" bindtap="bindDevice" class="{{item.checked?'device-item device-current':'device-item'}}">{{item.deviceName}}</view>
+                        <view wx:for="{{item.devices}}" wx:key="i" data-device-id="{{item.deviceId}}" bindtap="bindDevice" class="{{item.checked?'device-item device-current':'device-item'}}">{{item.deviceName}}</view>
                     </view>
                 </view>
             </scroll-view>
@@ -32,12 +32,12 @@
         <!-- 基础信息 -->
         <scroll-view scroll-y="true" class="detail1" wx:if="{{navIndex == 0}}">
             <view class="device-img">
-                <image src="/statics/images/icon.png" mode=""/>
+                <image src="/statics/images/icon.png" mode="" />
             </view>
             <view class="device-status">
-                <image src="/statics/images/point_green.png" class="point" mode=""/>
+                <image src="/statics/images/point_green.png" class="point" mode="" />
                 <text>有效</text>
-                <image src="/statics/images/point_green.png" class="point" mode=""/>
+                <image src="/statics/images/point_green.png" class="point" mode="" />
                 <text>运行</text>
             </view>
             <view class="device-infos">
@@ -52,7 +52,7 @@
         <!-- 设备数采 -->
         <scroll-view scroll-y="true" class="detail2" wx:if="{{navIndex == 1}}">
             <view class="device-brand" wx:if="{{btnToggle == 0}}">
-                <image src="/statics/images/rocket.png" mode=""/>
+                <image src="/statics/images/rocket.png" mode="" />
                 <view class="brand-txt">
                     <text>运行</text>
                     <text>今日运行XX小时X分X秒</text>
@@ -105,16 +105,16 @@
                 </view>
                 <view class="legend">
                     <view>
-                        <image src="/statics/images/point_blue.png" mode=""/>
-                    稼动率
+                        <image src="/statics/images/point_blue.png" mode="" />
+                        稼动率
                     </view>
                     <view>
-                        <image src="/statics/images/point_red.png" mode=""/>
-                    设备平均稼动率
+                        <image src="/statics/images/point_red.png" mode="" />
+                        设备平均稼动率
                     </view>
                     <view>
-                        <image src="/statics/images/point_green.png" mode=""/>
-                    开机率
+                        <image src="/statics/images/point_green.png" mode="" />
+                        开机率
                     </view>
                 </view>
             </view>
@@ -125,15 +125,15 @@
                 </view>
                 <view class="legend">
                     <view>
-                        <image src="/statics/images/point_blue.png" mode=""/>
+                        <image src="/statics/images/point_blue.png" mode="" />
                         当日实时
                     </view>
                     <view>
-                        <image src="/statics/images/point_red.png" mode=""/>
+                        <image src="/statics/images/point_red.png" mode="" />
                         昨日
                     </view>
                     <view>
-                        <image src="/statics/images/point_green.png" mode=""/>
+                        <image src="/statics/images/point_green.png" mode="" />
                         设备平均
                     </view>
                 </view>
@@ -146,11 +146,11 @@
                 </view>
                 <view class="legend">
                     <view>
-                        <image src="/statics/images/point_blue.png" mode=""/>
+                        <image src="/statics/images/point_blue.png" mode="" />
                         产量
                     </view>
                     <view>
-                        <image src="/statics/images/point_red.png" mode=""/>
+                        <image src="/statics/images/point_red.png" mode="" />
                         设备平均产量
                     </view>
                 </view>
@@ -158,7 +158,18 @@
             <view class="device-databox" wx:if="{{btnToggle == 1}}">
                 <text class="title">报警分析</text>
                 <view class="sub-title">近7日高频报警</view>
-
+                <view class="table">
+                    <view class="thead">
+                        <view class="td">排名</view>
+                        <view class="td">报警</view>
+                        <view class="td">次数</view>
+                    </view>
+                    <view class="tr" wx:for="{{alarmData}}" wx:key="index">
+                        <view class="td">{{index+1}}</view>
+                        <view class="td">{{item.value}}</view>
+                        <view class="td">{{item.times}}</view>
+                    </view>
+                </view>
             </view>
             <view class="device-bottom">
                 <view class="btn" bindtap='bindAnalysisToggle'>实时</view>
@@ -168,6 +179,63 @@
         <!-- 故障预测 -->
         <view class="detail3" wx:if="{{navIndex == 2}}"></view>
         <!-- 设备维保 -->
-        <view class="detail4" wx:if="{{navIndex == 3}}"></view>
+        <scroll-view class="detail4" scroll-y="true" wx:if="{{navIndex == 3}}">
+            <view class="checkpoints">
+                <view class="title">保养点检</view>
+                <view class="">
+                    
+                </view>
+                <view class="title">故障告警</view>
+                <view class="content">
+                    <view>
+                        <text>保养</text>
+                        <text>3</text>
+                    </view>
+                    <view>
+                        <text>点检</text>
+                        <text>1</text>
+                    </view>
+                    <view>
+                        <text>告警</text>
+                        <text>130</text>
+                    </view>
+                </view>
+                <view class="title">维修质保</view>
+                <view class="content">
+                    <view>
+                        <text>累积维修</text>
+                        <text>3</text>
+                    </view>
+                    <view>
+                        <text>维修中</text>
+                        <text>1</text>
+                    </view>
+                    <view>
+                        <text>质保中</text>
+                        <text>130</text>
+                    </view>
+                </view>
+            </view>
+            <view class="time-axis">
+                <view class="title">维修事件时间轴</view>
+                <view class="listview-container margin_bottom">
+                    <block wx:for="{{timeList}}" wx:key="index">
+                        <view class="playlog-item">
+                            <view class="dotline">
+                                <!-- 竖线 -->
+                                <view class="line"></view>
+                                <!-- 圆点 -->
+                                <view class="dot"></view>
+                                <!-- 时间戳 -->
+                            </view>
+                            <view class="content">
+                                <text class="course">{{item.time}}</text>
+                                <text class="chapter">{{item.value}}</text>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </scroll-view>
     </view>
 </view>
