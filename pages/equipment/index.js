@@ -98,5 +98,10 @@ Page({
         this.setData({
             showCheckModa:true
         })
+    },
+    navigateToDetail(){
+        wx.navigateTo({
+          url: '/pages/equipment/detail',
+        })
     }
 })

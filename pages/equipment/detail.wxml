@@ -64,7 +64,7 @@
                     <text>7:00 - 12:00</text>
                 </view>
                 <view class="device-chart">
-                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar1" ec="{{ ec1 }}" force-use-old-canvas="true"></ec-canvas>
+                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar1" ec="{{ ec1 }}" ></ec-canvas>
                     <view class="chart-mask">
                         <view class="ti ti1" data-type="0" bindtap='getRunningType'></view>
                         <view class="ti ti2" data-type="1" bindtap='getRunningType'></view>
@@ -101,7 +101,7 @@
                 <text class="title">稼动率分析</text>
                 <view class="sub-title">近7日稼动率趋势</view>
                 <view class="device-chart2">
-                    <ec-canvas id="device-Stacked" canvas-id="mychart-line1" ec="{{ ec2 }}" force-use-old-canvas="true"></ec-canvas>
+                    <ec-canvas id="device-Stacked" canvas-id="mychart-line1" ec="{{ ec2 }}" ></ec-canvas>
                 </view>
                 <view class="legend">
                     <view>
@@ -121,7 +121,7 @@
             <view class="device-databox" wx:if="{{btnToggle == 1}}">
                 <text class="title">运行情况对比</text>
                 <view class="device-chart3">
-                    <ec-canvas id="device-Stacked" canvas-id="mychart-line2" ec="{{ ec3 }}" force-use-old-canvas="true"></ec-canvas>
+                    <ec-canvas id="device-Stacked" canvas-id="mychart-line2" ec="{{ ec3 }}" ></ec-canvas>
                 </view>
                 <view class="legend">
                     <view>
@@ -142,7 +142,7 @@
                 <text class="title">产量分析</text>
                 <view class="sub-title">近7日产量趋势</view>
                 <view class="device-chart2">
-                    <ec-canvas id="device-production" canvas-id="mychart-line2" ec="{{ ec4 }}" force-use-old-canvas="true"></ec-canvas>
+                    <ec-canvas id="device-production" canvas-id="mychart-line2" ec="{{ ec4 }}"></ec-canvas>
                 </view>
                 <view class="legend">
                     <view>

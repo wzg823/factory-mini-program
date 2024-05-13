@@ -1,51 +1,50 @@
 {
-  "pages": [
-      "pages/equipment/detail",
-      "pages/home/home",
-    "pages/login/index",
-    "pages/equipment/index",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/my/index"
-  ],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
-  },
-  "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#009688",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "/statics/images/untab1.png",
-        "selectedIconPath": "/statics/images/tab1.png"
-      },
-      {
-        "pagePath": "pages/equipment/index",
-        "text": "设备",
-        "iconPath": "/statics/images/untab2.png",
-        "selectedIconPath": "/statics/images/tab2.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "数据",
-        "iconPath": "/statics/images/untab4.png",
-        "selectedIconPath": "/statics/images/tab4.png"
-      },
-      {
-        "pagePath": "pages/my/index",
-        "text": "我的",
-        "iconPath": "/statics/images/untab5.png",
-        "selectedIconPath": "/statics/images/tab5.png"
-      }
-    ]
-  },
-  "componentFramework": "glass-easel",
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+    "pages": [
+        "pages/home/home",
+        "pages/equipment/detail",
+        "pages/login/index",
+        "pages/equipment/index",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/my/index"
+    ],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarBackgroundColor": "#ffffff"
+    },
+    "tabBar": {
+        "color": "#7A7E83",
+        "selectedColor": "#009688",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [{
+                "pagePath": "pages/home/home",
+                "text": "首页",
+                "iconPath": "/statics/images/untab1.png",
+                "selectedIconPath": "/statics/images/tab1.png"
+            },
+            {
+                "pagePath": "pages/equipment/index",
+                "text": "设备",
+                "iconPath": "/statics/images/untab2.png",
+                "selectedIconPath": "/statics/images/tab2.png"
+            },
+            {
+                "pagePath": "pages/index/index",
+                "text": "数据",
+                "iconPath": "/statics/images/untab4.png",
+                "selectedIconPath": "/statics/images/tab4.png"
+            },
+            {
+                "pagePath": "pages/my/index",
+                "text": "我的",
+                "iconPath": "/statics/images/untab5.png",
+                "selectedIconPath": "/statics/images/tab5.png"
+            }
+        ]
+    },
+    "componentFramework": "glass-easel",
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
 }

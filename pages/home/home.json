@@ -2,6 +2,7 @@
     "navigationStyle": "custom",
     "backgroundColor":"#F8F8F8",
     "usingComponents": {
-        "ec-canvas": "../../ec-canvas/ec-canvas"
+        "ec-canvas": "../../ec-canvas/ec-canvas",
+        "van-circle": "@vant/weapp/circle/index"
     }
 }

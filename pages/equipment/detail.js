@@ -52,7 +52,7 @@ function initChart4(canvas, width, height, dpr) { //产量分析
 var option = {}
 Page({
     data: {
-        navIndex: 3,
+        navIndex: 0,
         shops: [{
                 id: 1,
                 name: '车间1',

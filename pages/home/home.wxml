@@ -13,13 +13,13 @@
             <swiper class="home-banner" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
                 <!-- <block wx:for="{{background}}" wx:key="*this"> -->
                 <swiper-item>
-                    <image src="../../statics/images/s_banner.png" class="banner-image"></image>
+                    <image src="../../statics/images/banner.png" class="banner-image"></image>
                 </swiper-item>
                 <swiper-item>
-                    <image src="../../statics/images/s_banner.png" class="banner-image"></image>
+                    <image src="../../statics/images/banner.png" class="banner-image"></image>
                 </swiper-item>
                 <swiper-item>
-                    <image src="../../statics/images/s_banner.png" class="banner-image"></image>
+                    <image src="../../statics/images/banner.png" class="banner-image"></image>
                 </swiper-item>
                 <!-- </block> -->
             </swiper>
@@ -28,45 +28,45 @@
                 <text class="home-module-title">设备管理与分析</text>
                 <view class="icon-box">
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/clfx.png" mode="" />
                         <text>设备台账</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/sbgj.png" mode="" />
                         <text>设备告警</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/yxfx.png" mode="" />
                         <text>运行分析</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/xlfx.png" mode="" />
                         <text>效率分析</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/sbtz.png" mode="" />
                         <text>产量分析</text>
                     </view>
                 </view>
                 <view class="icon-box">
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/gjfx.png" mode="" />
                         <text>告警分析</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/wbfx.png" mode="" />
                         <text>维保分析</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/bxfx.png" mode="" />
                         <text>报修分析</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/wxfx.png" mode="" />
                         <text>维修分析</text>
                     </view>
                     <view class="icon-item">
-                        <image src="../../statics/images/icon.png" mode="" />
+                        <image src="../../statics/images/zbfx.png" mode="" />
                         <text>质保分析</text>
                     </view>
                 </view>
@@ -108,7 +108,26 @@
                     </view>
                 </view>
                 <view class="content">
-                    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+                    <van-circle value="{{ 30 }}" color="#3A97F4" layer-color="#eeeeee" stroke-width="10" size="70" text="11" />
+                    <van-circle value="{{ 30 }}" color="#3A97F4" layer-color="#eeeeee" stroke-width="10" size="70" text="11" />
+                    <van-circle value="{{ 30 }}" color="#3A97F4" layer-color="#eeeeee" stroke-width="10" size="70" text="11" />
+                    <van-circle value="{{ 30 }}" color="#3A97F4" layer-color="#eeeeee" stroke-width="10" size="70" text="11" />
+                </view>
+            </view>
+            <!-- 模块四 -->
+            <view class="home-module4">
+                <view class="top">
+                    <view class="tl">
+                        
+                    </view>
+                    <view class="tr">
+                        <view class="rt"></view>
+                        <view class="rb"></view>
+                    </view> 
+                </view>
+                <view class="bottom">
+                    <view class="bl"></view>
+                    <view class="br"></view>
                 </view>
             </view>
         </view>

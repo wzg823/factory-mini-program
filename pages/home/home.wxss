@@ -133,5 +133,9 @@
     border: 5rpx solid #0A78F5;
 }
 .content{
-    height: 200rpx;
+    /* height: 200rpx; */
+    padding-top: 30rpx;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }

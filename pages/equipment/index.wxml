@@ -18,7 +18,7 @@
                     </view>
                 </view>
                 <view class="rt">
-                    <view class="btn primary">设备详情</view>
+                    <view class="btn primary" bindtap='navigateToDetail'>设备详情</view>
                     <view class="btn ghost">设备报修</view>
                 </view>
             </view>
