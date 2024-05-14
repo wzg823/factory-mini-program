@@ -1,6 +1,8 @@
 // pages/equipment/detail.js
+const app = getApp();  
 const request = require('../../utils/request');
 import * as echarts from '../../ec-canvas/echarts';
+import moment from 'moment';
 let chart = null;
 
 function initChart(canvas, width, height, dpr) { //运行状态
@@ -53,29 +55,11 @@ var option = {}
 Page({
     data: {
         navIndex: 0,
-        shops: [{
-                id: 1,
-                name: '车间1',
-                expanded: false,
-                devices: [{
-                    deviceId: 1,
-                    deviceName: '设备1',
-                    checked: false
-                }, ],
-            },
-            {
-                id: 2,
-                name: '车间2',
-                expanded: false,
-                devices: [{
-                    deviceId: 11,
-                    deviceName: '设备1',
-                    checked: false
-                }, ],
-            },
-        ],
+        shops: [],
         currentShop: 0,
         btnToggle: 0,
+        baseInfo:null,
+        chartType:app.globalData.chartType,
         ec1: {
             onInit: initChart
         },
@@ -134,7 +118,66 @@ Page({
         ]
     },
     onLoad(options) {
-
+        console.log(options.id)
+        this.getProductionList(options.id)
+        this.getCommon(options.id)
+        this.getRunning(options.id)
+    },
+    getProductionList(optionId){
+        request('device/info/production-list','GET').then(res=>{
+            console.log(res)
+            if(res.code == 0){
+                let shops = []
+                res.data && res.data.forEach(item=>{
+                    let arr = []
+                    item.list && item.list.forEach(items=>{
+                        if(items.deviceId == optionId){
+                            arr.push({
+                                deviceId: `${items.id.c[0]}${items.id.c[1]}`,
+                                deviceName: items.code,
+                                checked: true
+                            })
+                        }else{
+                            arr.push({
+                                deviceId: `${items.id.c[0]}${items.id.c[1]}`,
+                                deviceName: items.code,
+                                checked: false
+                            })
+                        }
+                        
+                    })
+                    shops.push({
+                        id: item.id,
+                        name: item.value,
+                        expanded: false,
+                        devices: arr
+                    })
+                })
+                this.setData({shops})
+            }
+        })
+    },
+    getCommon(device_id){
+        request('device/info/basic','GET',{device_id}).then(res=>{
+            if(res.code == 0){
+                this.setData({
+                    baseInfo:res.data
+                })
+            }
+        })
+    },
+    getRunning(device_id){
+        let start = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss')
+        let end  = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss')
+        console.log(start)
+        console.log(end)
+        request('device/info/state-running','GET',{
+            device_id,
+            start,
+            end,
+        }).then(res=>{
+            console.log(res)
+        })
     },
     horizontalBar() {
         var horziontalBarOption = {
@@ -501,7 +544,8 @@ Page({
             }, 500)
         }
         this.setData({
-            navIndex: e.target.dataset.index
+            navIndex: e.target.dataset.index,
+            btnToggle: 0,
         })
     },
     toggleDevices: function (e) {

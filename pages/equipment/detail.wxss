@@ -60,6 +60,10 @@ page {
 }
 
 .shop-name {
+    max-width: 200rpx;
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;
     height: 100rpx;
     text-align: center;
     line-height: 100rpx;
@@ -77,6 +81,10 @@ page {
     line-height: 100rpx;
     color: #111;
     font-size: 30rpx;
+    max-width: 200rpx;
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;
 }
 
 .device-current {

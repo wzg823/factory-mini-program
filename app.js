@@ -15,6 +15,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    chartType:true //开启/关闭echarts的强制使用旧版canvas
   },
 })

@@ -2,7 +2,7 @@
 const JSONbig = require('../miniprogram_npm/json-bigint/index');
 const baseUrl = 'http://service.ideamark.cn/';
 
-const request = (url, method, data, header = {}) => {
+const request = (url, method, data = {}, header = {}) => {
     let token = wx.getStorageSync('token')
     let pms_id = wx.getStorageSync('pms_id')
     if(token){

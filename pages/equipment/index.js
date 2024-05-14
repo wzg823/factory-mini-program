@@ -1,6 +1,6 @@
 // pages/equipment/index.js
 const request = require('../../utils/request');
-const { getStatusText } = require('../../utils/util.js');
+const { getStatusText,getStatusPic,getStatusColor } = require('../../utils/util.js');
 Page({
     data: {
         animationData: {},
@@ -13,6 +13,7 @@ Page({
 
             }
         ],
+        imagePath:'/statics/images/point_gray.png',
         selectedItems:[],
         positionTit:'全部车间',
         status:[
@@ -42,20 +43,7 @@ Page({
                 checked:false
             }
         ],
-        deviceItems:[
-            {
-                id:'123',
-                type:'other',
-                code:'SB-202401-001',
-                brand:'123',
-                model:'123',
-                position:'123',
-                crop_rate:82.9796,
-                production:33,
-                run_times:1190,//s
-                status:1 //1运行 2报警 3调机 4 待机 5关机
-            }
-        ],
+        deviceItems:[],
         page:1,
         ismore:true,
         currentStatus:[]
@@ -104,6 +92,8 @@ Page({
                         production: item.production,
                         run_times: this.secondsToHours(item.run_times),
                         status: getStatusText(item.status), //1运行 2报警 3调机 4 待机 5关机
+                        pic:`/statics/images/point_${getStatusPic(item.status)}.png`,
+                        color:getStatusColor(item.status)
                     })
                 })
                 this.setData({
@@ -239,9 +229,10 @@ Page({
             showCheckModa:true
         })
     },
-    navigateToDetail(){
+    navigateToDetail(e){
+        let id = e.target.dataset.id
         wx.navigateTo({
-          url: '/pages/equipment/detail',
+          url: '/pages/equipment/detail?id=' + id,
         })
     },
     secondsToHours(seconds) {  

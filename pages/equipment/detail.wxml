@@ -32,7 +32,7 @@
         <!-- 基础信息 -->
         <scroll-view scroll-y="true" class="detail1" wx:if="{{navIndex == 0}}">
             <view class="device-img">
-                <image src="/statics/images/icon.png" mode="" />
+                <image src="/statics/images/banner.png" mode="" />
             </view>
             <view class="device-status">
                 <image src="/statics/images/point_green.png" class="point" mode="" />
@@ -42,10 +42,55 @@
             </view>
             <view class="device-infos">
                 <view class="device-infos-item">
-                    设备编号：YNWLSB-202401-001
+                    设备编号：{{baseInfo.id.c[0]}}{{baseInfo.id.c[1]}}
                 </view>
                 <view class="device-infos-item">
-                    设备品牌：长190cm；宽180cm；高20 0cm
+                    内部编号：{{baseInfo.code}}
+                </view>
+                <view class="device-infos-item">
+                    序列号：{{baseInfo.serial_num}}
+                </view>
+                <view class="device-infos-item">
+                    设备类别：{{baseInfo.genre.value}}
+                </view>
+                <view class="device-infos-item">
+                    设备类型：{{baseInfo.type}}
+                </view>
+                <view class="device-infos-item">
+                    设备品牌：{{baseInfo.brand.value}}
+                </view>
+                <view class="device-infos-item">
+                    设备型号：{{baseInfo.model.value}}
+                </view>
+                <view class="device-infos-item">
+                    设备尺寸：长{{baseInfo.size.width}}mm；宽{{baseInfo.size.length}}mm；高{{baseInfo.size.height}}mm
+                </view>
+                <view class="device-infos-item" style="background-color: #EFF7FF;">
+                    系统类型：{{baseInfo.os_type.value}}
+                </view>
+                <view class="device-infos-item" style="background-color: #EFF7FF;">
+                    系统型号：{{baseInfo.os_id.value}}
+                </view>
+                <view class="device-infos-item" style="background-color: #EFF7FF;">
+                    系统版本号：{{baseInfo.os_version}}
+                </view>
+                <view class="device-infos-item" style="background-color: #FFF7EF;">
+                    资产编号：{{baseInfo.asset_no}}
+                </view>
+                <view class="device-infos-item" style="background-color: #FFF7EF;">
+                    设备位置：{{baseInfo.position.value}}
+                </view>
+                <view class="device-infos-item" style="background-color: #FFF7EF;">
+                    设备状态：
+                </view>
+                <view class="device-infos-item" style="background-color: #FFF7EF;">
+                    设备出厂：{{baseInfo.delivery_time}}
+                </view>
+                <view class="device-infos-item" style="background-color: #FFF7EF;">
+                    设备采购：{{baseInfo.buy_time}}
+                </view>
+                <view class="device-infos-item" style="background-color: #FFF7EF;">
+                    供应商：{{baseInfo.suppliers}}
                 </view>
             </view>
         </scroll-view>
@@ -64,7 +109,7 @@
                     <text>7:00 - 12:00</text>
                 </view>
                 <view class="device-chart">
-                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar1" ec="{{ ec1 }}" ></ec-canvas>
+                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar1" ec="{{ ec1 }}" force-use-old-canvas="{{chartType}}"></ec-canvas>
                     <view class="chart-mask">
                         <view class="ti ti1" data-type="0" bindtap='getRunningType'></view>
                         <view class="ti ti2" data-type="1" bindtap='getRunningType'></view>

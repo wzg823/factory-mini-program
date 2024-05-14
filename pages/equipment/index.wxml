@@ -10,15 +10,15 @@
                 <view class="lt">
                     <view class="tit">
                         {{item.position}}
-                       <image class="point" src="/statics/images/point_gray.png" mode=""/><text>{{item.status}}</text>
+                       <image class="point" src="{{item.pic}}" mode=""/><text style="color:{{item.color}}">{{item.status}}</text>
                     </view>
                     <view class="con">
                         <text>{{item.code}}</text>
-                        <text>{{item.model}} | {{itme.brand}} | {{item.os_type}}</text>
+                        <text>{{item.type}} | {{item.brand}} | {{item.os_type}}</text>
                     </view>
                 </view>
                 <view class="rt">
-                    <view class="btn primary" bindtap='navigateTo'>设备详情</view>
+                    <view class="btn primary" data-id="{{item.id}}" bindtap='navigateToDetail'>设备详情</view>
                     <view class="btn ghost">设备报修</view>
                 </view>
             </view>
