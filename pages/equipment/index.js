@@ -232,7 +232,7 @@ Page({
     navigateToDetail(e){
         let id = e.target.dataset.id
         wx.navigateTo({
-          url: '/pages/equipment/detail?id=' + id,
+          url: '/equipment/pages/detail/detail?id=' + id,
         })
     },
     secondsToHours(seconds) {  

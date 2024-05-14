@@ -1,7 +1,7 @@
 // pages/equipment/detail.js
 const app = getApp();  
-const request = require('../../utils/request');
-import * as echarts from '../../ec-canvas/echarts';
+const request = require('../../../utils/request');
+import * as echarts from '../../../ec-canvas/echarts';
 import moment from 'moment';
 let chart = null;
 
