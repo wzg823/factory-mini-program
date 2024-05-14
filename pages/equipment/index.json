@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "设备管理" 
+  "usingComponents": {
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "navigationBarTitleText": "设备管理",
+  "onReachBottomDistance":20
 }

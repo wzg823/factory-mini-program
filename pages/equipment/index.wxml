@@ -5,35 +5,35 @@
         <image class="sx" src="/statics/images/sx.png" mode="" />
     </view>
     <view class="equ-list">
-        <view class="equ-item">
+        <view class="equ-item" wx:for="{{deviceItems}}" wx:key="{{item.id}}">
             <view class="tp">
                 <view class="lt">
                     <view class="tit">
-                        3号车间 1号机
-                       <image class="point" src="/statics/images/point_gray.png" mode=""/><text>未联网</text>
+                        {{item.position}}
+                       <image class="point" src="/statics/images/point_gray.png" mode=""/><text>{{item.status}}</text>
                     </view>
                     <view class="con">
-                        <text>SB-202401-001</text>
-                        <text>立加 | 马扎克 | 发那科</text>
+                        <text>{{item.code}}</text>
+                        <text>{{item.model}} | {{itme.brand}} | {{item.os_type}}</text>
                     </view>
                 </view>
                 <view class="rt">
-                    <view class="btn primary" bindtap='navigateToDetail'>设备详情</view>
+                    <view class="btn primary" bindtap='navigateTo'>设备详情</view>
                     <view class="btn ghost">设备报修</view>
                 </view>
             </view>
             <view class="bm">
                 <view>
-                    <text>移动率</text>
-                    <text>68%</text>
+                    <text>稼动率</text>
+                    <text>{{item.crop_rate}}%</text>
                 </view>
                 <view>
                     <text>产量</text>
-                    <text>20</text>
+                    <text>{{item.production}}</text>
                 </view>
                 <view>
                     <text>运行时长</text>
-                    <text>6.5h</text>
+                    <text>{{item.run_times}}</text>
                 </view>
             </view>
 
@@ -44,21 +44,15 @@
         <view class="dp">
             设备位置
             <view class="select" bindtap="showCheckModal">
-                全部车间
+                {{isAllSelected ? '全部车间' : positionTit}}
                 <image src="/statics/images/down.png" mode="" />
             </view>
         </view>
         <view class="ck">
             运行状态
             <view class="check-box">
-                <view class="checkItem">
-                    运行
-                </view>
-                <view class="checkItem">
-                    运行
-                </view>
-                <view class="checkItem">
-                    运行
+                <view bindtap='bindDeviceStatus' class="{{item.checked?'checkItem currentItem':'checkItem'}}" wx:for="{{status}}" wx:key="{{item.id}}" data-id="{{item.id}}">
+                    {{item.value}}
                 </view>
             </view>
         </view>

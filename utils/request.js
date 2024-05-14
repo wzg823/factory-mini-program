@@ -1,10 +1,15 @@
 // utils/request.js
-const baseUrl = 'http://service.ideamark.cn/org/';
+const JSONbig = require('../miniprogram_npm/json-bigint/index');
+const baseUrl = 'http://service.ideamark.cn/';
 
 const request = (url, method, data, header = {}) => {
     let token = wx.getStorageSync('token')
+    let pms_id = wx.getStorageSync('pms_id')
     if(token){
         data['token'] = token
+    }
+    if(pms_id){
+        data['pms_id'] = pms_id
     }
     return new Promise((resolve, reject) => {
         wx.request({
@@ -14,6 +19,7 @@ const request = (url, method, data, header = {}) => {
                 'pms':'customer',
                 ...data
             },
+            dataType:'text',
             headers: {
                 'Content-Type': 'application/json',
                 ...header,
@@ -25,7 +31,9 @@ const request = (url, method, data, header = {}) => {
                 } = res;
                 console.log(res)
                 if (statusCode >= 200 && statusCode < 300) {
-                    resolve(data);
+                    let resData = JSONbig.parse(data)
+                    console.log(resData)
+                    resolve(resData);
                     if (data.code == 9999) {
                         // 需要重新登录
                     } else if (data.code == 110110) {

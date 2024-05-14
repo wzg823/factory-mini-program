@@ -13,13 +13,14 @@ Page({
   },
   login(){
       if(this.data.isChecked){
-        request('auth/login','POST',{
+        request('org/auth/login','POST',{
             mobile:this.data.phone,
             password:this.data.password
         }).then(res=>{
             console.log(res)
             if(res.code == 0 && res.data.token){
                 wx.setStorageSync('token', res.data.token);  
+                wx.setStorageSync('pms_id', res.data.pms_id);  
                 wx.showToast({
                   title: '登录成功，即将跳转到首页',
                   icon:'none'
