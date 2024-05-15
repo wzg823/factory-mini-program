@@ -199,4 +199,10 @@ page{
     justify-content: space-between;
 }
 
-
+.loading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100rpx;
+}

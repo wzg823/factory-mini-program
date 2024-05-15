@@ -60,6 +60,7 @@ Page({
         btnToggle: 0,
         baseInfo:null,
         chartType:app.globalData.chartType,
+        runningValue:'',
         ec1: {
             onInit: initChart
         },
@@ -115,13 +116,20 @@ Page({
                 value:"姓修，工单号: EX-20231131-0101更换齿轮箱坦克链",
                 time:'31日'
             }
-        ]
+        ],
+        dateRatecroup:0, //稼动率
+        totalRatecroup:[],//7天稼动率数据
+        dateRateproduction:0, //产量
+        totalRateproduction:[], //7天产量数据
     },
     onLoad(options) {
         console.log(options.id)
-        this.getProductionList(options.id)
-        this.getCommon(options.id)
-        this.getRunning(options.id)
+        this.getProductionList(options.id) //设备列表
+        this.getCommon(options.id) //基础信息
+        this.getRunning(options.id) //运行状态
+        this.getRealtime(options.id) //实时运行统计
+        this.getRatecroup(options.id) //稼动率分析
+        this.getRateproduction(options) //产量分析
     },
     getProductionList(optionId){
         request('device/info/production-list','GET').then(res=>{
@@ -166,20 +174,75 @@ Page({
             }
         })
     },
-    getRunning(device_id){
-        let start = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss')
-        let end  = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss')
-        console.log(start)
-        console.log(end)
-        request('device/info/state-running','GET',{
-            device_id,
-            start,
-            end,
-        }).then(res=>{
-            console.log(res)
+    getRealtime(device_id){
+        request('device/info/state-run','GET',{device_id}).then(res=>{
+            if(res.code == 0){
+                this.setData({
+                    realtimeData:res.data
+                })
+            }
         })
     },
-    horizontalBar() {
+    getRatecroup(device_id){
+        request('device/info/rate-croup','GET',{
+            device_id,
+            start: moment().subtract(6, 'days').format('YYYY-MM-DD HH:mm:ss'),
+            end: moment().endOf('day').format('YYYY-MM-DD HH:mm:ss'),
+        }).then(res=>{
+            if(res.code == 0){
+                this.setData({
+                    dateRatecroup:res.data[res.data.length - 1].crop_rate,
+                    totalRatecroup:res.data
+                })
+            }
+        })
+    },
+    getRateproduction(device_id){
+        request('device/info/rate-production','GET',{
+            device_id,
+            start: moment().subtract(6, 'days').format('YYYY-MM-DD HH:mm:ss'),
+            end: moment().endOf('day').format('YYYY-MM-DD HH:mm:ss'),
+        }).then(res=>{
+            if(res.code == 0){
+                this.setData({
+                    dateRateproduction:res.data[res.data.length - 1].production,
+                    totalRateproduction:res.data
+                })
+            }
+        })
+    },
+    getRunning(device_id){
+        request('device/info/state-running','GET',{
+            device_id,
+            start: moment().startOf('day').format('YYYY-MM-DD HH:mm:ss'),
+            end: moment().endOf('day').format('YYYY-MM-DD HH:mm:ss'),
+        }).then(res=>{
+            console.log(res)
+            let runningTime = null
+            res.data && res.data.map(item=>{
+                // 获取当日运行总时长
+                if(item.status == 'run'){
+                    runningTime += moment(item.end_time).diff(moment(item.start_time))
+                }
+            })
+            console.log('////////////////////////')
+            console.log(runningTime)
+            this.getTime(runningTime)
+        })
+    },
+    getTime(value){
+        const duration = moment.duration(value);  
+        const hours = duration.asHours();
+        const minutesFloat = hours - Math.floor(hours);
+        const minutes = Math.floor(minutesFloat * 60);
+        const seconds = duration.milliseconds() / 1000 % 60;
+        let timeString  = `${Math.floor(hours)}小时${minutes.toString().padStart(2, '0')}分${seconds.toFixed(0).toString().padStart(2, '0')}秒`; 
+        console.log(timeString)
+        this.setData({
+            runningValue:timeString
+        })
+    },
+    horizontalBar() { // 实时运行状态
         var horziontalBarOption = {
             title: {
                 show: false
@@ -338,6 +401,21 @@ Page({
         chart.setOption(horziontalBarOption)
     },
     stackedLine() { //稼动率
+        let ratecroupData = this.data.totalRatecroup
+        let dateValue = []
+        let averageCroprateData = []
+        let averageStartupData = []
+        let cropData = []
+        ratecroupData && ratecroupData.forEach(item=>{
+            let date = moment(item.date).format('MM/DD')
+            dateValue.push(date)
+            averageCroprateData.push(item.average_crop_rate)
+            averageStartupData.push(item.average_startup_rate)
+            cropData.push(item.crop_rate)
+        })
+        console.log(averageCroprateData)
+        console.log(averageStartupData)
+        console.log(cropData)
         var stackedLineOption = {
             tooltip: {
                 trigger: 'axis',
@@ -350,7 +428,7 @@ Page({
             },
             grid: {
                 left: '0',
-                right: '10rpx',
+                right: '15rpx',
                 bottom: '0',
                 top: '10rpx',
                 containLabel: true
@@ -361,13 +439,14 @@ Page({
                 axisTick: {
                     show: false // 隐藏 x 轴刻度线  
                 },
-                data: ['3/15', '3/16', '3/17', '3/18', '3/19', '3/20', '3/21']
+                axisLabel:{
+                    interval:0
+                },
+                data: dateValue
             },
             yAxis: {
                 type: 'value',
                 min: 0,
-                max: 1,
-                interval: 0.2
             },
             series: [{
                     name: '稼动率',
@@ -380,7 +459,8 @@ Page({
                             }
                         }
                     },
-                    data: [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+                    
+                    data: cropData
                 },
                 {
                     name: '设备平均稼动率',
@@ -393,7 +473,7 @@ Page({
                             }
                         }
                     },
-                    data: [0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2]
+                    data: averageCroprateData
                 },
                 {
                     name: '开机率',
@@ -406,7 +486,7 @@ Page({
                             }
                         }
                     },
-                    data: [0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3]
+                    data: averageStartupData
                 }
             ]
         };
@@ -477,6 +557,18 @@ Page({
         chart3.setOption(runningBarOption)
     },
     productionLine() { //产量分析
+        let productionData = this.data.totalRateproduction
+        let dateValue = []
+        let proData = []
+        let averageData = []
+        productionData && productionData.forEach(item=>{
+            let date = moment(item.date).format('MM/DD')
+            dateValue.push(date)
+            proData.push(item.production)
+            averageData.push(item.average)
+        })
+        console.log(productionData)
+        console.log(averageData)
         var productionOption = {
             tooltip: {
                 trigger: 'axis',
@@ -489,7 +581,7 @@ Page({
             },
             grid: {
                 left: '0',
-                right: '10rpx',
+                right: '15rpx',
                 bottom: '0',
                 top: '10rpx',
                 containLabel: true
@@ -500,7 +592,10 @@ Page({
                 axisTick: {
                     show: false // 隐藏 x 轴刻度线  
                 },
-                data: ['3/15', '3/16', '3/17', '3/18', '3/19', '3/20', '3/21']
+                axisLabel:{
+                    interval:0
+                },
+                data: dateValue
             },
             yAxis: {
                 type: 'value',
@@ -517,7 +612,7 @@ Page({
                             }
                         }
                     },
-                    data: [10, 28, 30, 80, 60, 70, 22]
+                    data: proData
                 },
                 {
                     name: '设备平均产量',
@@ -530,7 +625,7 @@ Page({
                             }
                         }
                     },
-                    data: [10, 28, 30, 80, 60, 70, 22]
+                    data: averageData
                 },
             ]
         };

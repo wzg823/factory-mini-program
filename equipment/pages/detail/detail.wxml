@@ -32,7 +32,7 @@
         <!-- 基础信息 -->
         <scroll-view scroll-y="true" class="detail1" wx:if="{{navIndex == 0}}">
             <view class="device-img">
-                <image src="/statics/images/banner.png" mode="" />
+                <image src="{{baseInfo.cover}}" mode="" />
             </view>
             <view class="device-status">
                 <image src="/statics/images/point_green.png" class="point" mode="" />
@@ -100,7 +100,7 @@
                 <image src="/statics/images/rocket.png" mode="" />
                 <view class="brand-txt">
                     <text>运行</text>
-                    <text>今日运行XX小时X分X秒</text>
+                    <text>今日运行{{runningValue}}</text>
                 </view>
             </view>
             <view class="device-databox" wx:if="{{btnToggle == 0}}">
@@ -123,30 +123,66 @@
             <view class="device-databox" wx:if="{{btnToggle == 0}}">
                 <text class="title">实时运行数据</text>
                 <view class="data-block">
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
+                    <view class="data-item">
+                        <text>操作模式</text>
+                        <text>{{realtimeData.operation_mode}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>工件记数</text>
+                        <text>{{realtimeData.workpiece_count}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>程序名</text>
+                        <text>{{realtimeData.program_name}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>刀具号</text>
+                        <text>{{realtimeData.tool_no}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>报警代码</text>
+                        <text>{{realtimeData.alarm_code}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>主轴倍率</text>
+                        <text>{{realtimeData.spindle_magnification}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>进给倍率</text>
+                        <text>{{realtimeData.feed_rate}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>进给速度</text>
+                        <text>{{realtimeData.feed_spe}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>主轴转速</text>
+                        <text>{{realtimeData.spindle_spe}}</text>
+                    </view>
                 </view>
             </view>
             <view class="device-databox" wx:if="{{btnToggle == 0}}">
                 <text class="title">今日数据</text>
                 <view class="data-block">
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
-                    <view class="data-item"></view>
+                    <view class="data-item">
+                        <text>稼动率</text>
+                        <text>{{dateRatecroup}}%</text>
+                    </view>
+                    <view class="data-item">
+                        <text>产量</text>
+                        <text>{{dateRateproduction}}</text>
+                    </view>
+                    <view class="data-item">
+                        <text>报警</text>
+                        <text>0</text>
+                    </view>
                 </view>
             </view>
             <view class="device-databox" wx:if="{{btnToggle == 1}}">
                 <text class="title">稼动率分析</text>
                 <view class="sub-title">近7日稼动率趋势</view>
                 <view class="device-chart2">
-                    <ec-canvas id="device-Stacked" canvas-id="mychart-line1" ec="{{ ec2 }}" ></ec-canvas>
+                    <ec-canvas id="device-Stacked" canvas-id="mychart-line1" ec="{{ ec2 }}" force-use-old-canvas="{{chartType}}" ></ec-canvas>
                 </view>
                 <view class="legend">
                     <view>
@@ -166,7 +202,7 @@
             <view class="device-databox" wx:if="{{btnToggle == 1}}">
                 <text class="title">运行情况对比</text>
                 <view class="device-chart3">
-                    <ec-canvas id="device-Stacked" canvas-id="mychart-line2" ec="{{ ec3 }}" ></ec-canvas>
+                    <ec-canvas id="device-Stacked" canvas-id="mychart-line2" ec="{{ ec3 }}" force-use-old-canvas="{{chartType}}"></ec-canvas>
                 </view>
                 <view class="legend">
                     <view>
@@ -187,7 +223,7 @@
                 <text class="title">产量分析</text>
                 <view class="sub-title">近7日产量趋势</view>
                 <view class="device-chart2">
-                    <ec-canvas id="device-production" canvas-id="mychart-line2" ec="{{ ec4 }}"></ec-canvas>
+                    <ec-canvas id="device-production" canvas-id="mychart-line2" ec="{{ ec4 }}" force-use-old-canvas="{{chartType}}"></ec-canvas>
                 </view>
                 <view class="legend">
                     <view>

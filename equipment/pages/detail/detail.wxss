@@ -209,8 +209,16 @@ page {
     height: 116rpx;
     margin-top: 24rpx;
     border-radius: 10rpx 10rpx 10rpx 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    color: #111;
 }
-
+.data-item text:first-child{
+    margin-bottom: 12rpx;
+}
 .device-chart{
     height: 365rpx;
     position: relative;

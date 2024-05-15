@@ -3,6 +3,7 @@ const request = require('../../utils/request');
 const { getStatusText,getStatusPic,getStatusColor } = require('../../utils/util.js');
 Page({
     data: {
+        loading:false,
         animationData: {},
         windowHeight: 0,
         dropdownToggle: false,
@@ -57,7 +58,6 @@ Page({
         this.getDeviceList()
     },
     onReachBottom() {
-        console.log(213)
         let page = this.data.page
         if(this.data.ismore){
             page ++ 
@@ -69,6 +69,9 @@ Page({
         }
     },
     getDeviceList(){
+        this.setData({
+            loading:true
+        })
         request('device/info/card-list','GET',{
             page:this.data.page,
             page_size:10,
@@ -98,7 +101,8 @@ Page({
                 })
                 this.setData({
                     deviceItems:list,
-                    isBottom:res.data.has_more
+                    isBottom:res.data.has_more,
+                    loading:false
                 })
             }
         })

@@ -4,7 +4,10 @@
         筛选
         <image class="sx" src="/statics/images/sx.png" mode="" />
     </view>
-    <view class="equ-list">
+    <view class="loading" wx:if="{{loading}}">
+        <van-loading color="#1989fa" size="48rpx"></van-loading>
+    </view>
+    <view class="equ-list" wx:else>
         <view class="equ-item" wx:for="{{deviceItems}}" wx:key="{{item.id}}">
             <view class="tp">
                 <view class="lt">
