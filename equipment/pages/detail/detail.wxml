@@ -96,20 +96,22 @@
         </scroll-view>
         <!-- 设备数采 -->
         <scroll-view scroll-y="true" class="detail2" wx:if="{{navIndex == 1}}">
-            <view class="device-brand" wx:if="{{btnToggle == 0}}">
+            <view class="device-brand" wx:if="{{btnToggle == 0}}" style="{{nowStatus.bg}}">
                 <image src="/statics/images/rocket.png" mode="" />
                 <view class="brand-txt">
-                    <text>运行</text>
+                    <text>{{nowStatus.statusDesc}}</text>
                     <text>今日运行{{runningValue}}</text>
                 </view>
             </view>
             <view class="device-databox" wx:if="{{btnToggle == 0}}">
                 <view class="title">
-                    24小时运行状态
-                    <text>7:00 - 12:00</text>
+                    当日运行状态
+                    <!-- <view class="running-string">
+                        <text wx:for="{{runningString}}">{{item}}</text>
+                    </view> -->
                 </view>
                 <view class="device-chart">
-                    <ec-canvas id="device-waterfall" canvas-id="mychart-bar1" ec="{{ ec1 }}" force-use-old-canvas="{{chartType}}"></ec-canvas>
+                    <!-- <ec-canvas id="device-waterfall" canvas-id="mychart-bar1" ec="{{ ec1 }}" force-use-old-canvas="{{chartType}}"></ec-canvas>
                     <view class="chart-mask">
                         <view class="ti ti1" data-type="0" bindtap='getRunningType'></view>
                         <view class="ti ti2" data-type="1" bindtap='getRunningType'></view>
@@ -117,6 +119,44 @@
                         <view class="ti ti4" data-type="3" bindtap='getRunningType'></view>
                         <view class="ti ti5" data-type="4" bindtap='getRunningType'></view>
                         <view class="ti ti6" data-type="5" bindtap='getRunningType'></view>
+                    </view> -->
+                    <view class="running-chart">
+                        <view class="chart-item" data-type='run' bindtap='getRunningTime'>
+                            <text>运行</text>
+                            <view class="line-box">
+                                <view class="line-item" style="{{item.style}}"  wx:for="{{runningChartData.run}}"></view>
+                            </view>
+                        </view>
+                        <view class="chart-item" data-type='standby' bindtap='getRunningTime'>
+                            <text>待机</text>
+                            <view class="line-box">
+                                <view class="line-item" style="{{item.style}}" wx:for="{{runningChartData.standby}}"></view>
+                            </view>
+                        </view>
+                        <view class="chart-item" data-type='manual' bindtap='getRunningTime'>
+                            <text>调机</text>
+                            <view class="line-box">
+                                <view class="line-item" style="{{item.style}}" wx:for="{{runningChartData.manual}}"></view>
+                            </view>
+                        </view>
+                        <view class="chart-item" data-type='alarm' bindtap='getRunningTime'>
+                            <text>报警</text>
+                            <view class="line-box">
+                                <view class="line-item" style="{{item.style}}" wx:for="{{runningChartData.alarm}}"></view>
+                            </view>
+                        </view>
+                        <view class="chart-item" data-type='off' bindtap='getRunningTime'>
+                            <text>关机</text>
+                            <view class="line-box">
+                                <view class="line-item" style="{{item.style}}" wx:for="{{runningChartData.off}}"></view>
+                            </view>
+                        </view>
+                        <view class="chart-item" data-type='offline' bindtap='getRunningTime'>
+                            <text>离线</text>
+                            <view class="line-box">
+                                <view class="line-item" style="{{item.style}}" wx:for="{{runningChartData.offline}}"></view>
+                            </view>
+                        </view>
                     </view>
                 </view>
             </view>
@@ -263,8 +303,35 @@
         <scroll-view class="detail4" scroll-y="true" wx:if="{{navIndex == 3}}">
             <view class="checkpoints">
                 <view class="title">保养点检</view>
-                <view class="">
-                    
+                <text class="sub-tit">保养</text>
+                <view class="content">
+                    <view>
+                        <text>最新计划</text>
+                        <text style="color: #E93800;">逾期</text>
+                    </view>
+                    <view>
+                        <text>计划数</text>
+                        <text>100</text>
+                    </view>
+                    <view>
+                        <text>完成数</text>
+                        <text>100</text>
+                    </view>
+                </view>
+                <text class="sub-tit">点检</text>
+                <view class="content">
+                    <view>
+                        <text>最新计划</text>
+                        <text style="color: #35C984;">正常</text>
+                    </view>
+                    <view>
+                        <text>计划数</text>
+                        <text>100</text>
+                    </view>
+                    <view>
+                        <text>完成数</text>
+                        <text>100</text>
+                    </view>
                 </view>
                 <view class="title">故障告警</view>
                 <view class="content">

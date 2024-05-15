@@ -173,7 +173,7 @@ page {
     display: flex;
     flex-direction: column;
     font-size: 26rpx;
-    color: #C2DFFF;
+    color: #FFF;
 }
 .brand-txt text:first-child{
     color: #fff;
@@ -322,7 +322,8 @@ page {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    margin-top: 24rpx;
+    margin-bottom: 24rpx;
 }
 .checkpoints .content view{
     display: flex;
@@ -333,7 +334,14 @@ page {
 .checkpoints .content view text:first-child{
     margin-bottom: 25rpx;
 }
-
+.checkpoints .content view text:last-child{
+    font-size: 30rpx;
+    color: #111;
+    font-weight: bold;
+}
+.checkpoints .sub-tit{
+    font-size: 26rpx;
+}
 
 /*外部容器*/
 .listview-container {
@@ -411,3 +419,43 @@ page {
     font-weight: bold;
   }
   
+
+  .running-chart{
+    width: 100%;
+    padding-top: 24rpx;
+  }
+
+.running-chart .chart-item{
+    width: 100%;
+    height: 55rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.running-chart .chart-item text{
+    font-size: 22rpx;
+    color: #111;
+}
+.running-chart .chart-item .line-box{
+    width: calc(100% - 65rpx);
+    /* background-color: #F2F2F2; */
+    height: 55rpx;
+    position: relative;
+}
+
+.running-chart .chart-item .line-item{
+    width: 2%;
+    height: 16rpx;
+    background-color: #35C984;
+    position: absolute;
+    top: 20rpx;
+}
+
+.running-string{
+    width: 50%;
+}
+
+.running-string text{
+    font-size: 24rpx;
+}
